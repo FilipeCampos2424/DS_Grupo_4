@@ -24,11 +24,22 @@ class Funcionario {
     this.ativo = true;
 }        
   // Metodos get ( pegar )
-    public String getNome(String nome) { return this.nome; }
+    public String getNome() { return this.nome; }
     public String getCpf() { return this.cpf; }
     public String getCargo() { return this.cargo; }
     public double getSalario() { return this.salario; }
     public String getDepartamento() { return this.departamento; }
     public String getTipoContrato() { return this.tipoContrato; }
+
+    public boolean getValeTransporte() { return this.valeTransporte; }
+    public boolean getPlanoSaude() { return this.planoSaude; }
+    public boolean getValeRefeicao() { return this.valeRefeicao; }
+    public boolean getAtivo() { return this.ativo; }
+  
   // Metodos set ( definir )
+  public void setNome(String nome) { this.nome = nome; }
+  public void setCargo(String cargo) { this.cargo = cargo; }
+  public void setSalario(double salario) { this.salario = salario; }
+  public void setDepartamento(String departamento) { this.departamento = departamento; }
+  public void setTipoContrato(String tipoContrato) { this.tipoContrato = tipoContrato; }
 }
