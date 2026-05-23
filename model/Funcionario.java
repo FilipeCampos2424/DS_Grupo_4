@@ -31,10 +31,10 @@ class Funcionario {
     public String getDepartamento() { return this.departamento; }
     public String getTipoContrato() { return this.tipoContrato; }
 
-    public boolean getValeTransporte() { return this.valeTransporte; }
-    public boolean getPlanoSaude() { return this.planoSaude; }
-    public boolean getValeRefeicao() { return this.valeRefeicao; }
-    public boolean getAtivo() { return this.ativo; }
+    public boolean isValeTransporte() { return this.valeTransporte; }
+    public boolean isPlanoSaude() { return this.planoSaude; }
+    public boolean isValeRefeicao() { return this.valeRefeicao; }
+    public boolean isAtivo() { return this.ativo; }
   
   // Metodos set ( definir )
   public void setNome(String nome) { this.nome = nome; }
@@ -42,4 +42,9 @@ class Funcionario {
   public void setSalario(double salario) { this.salario = salario; }
   public void setDepartamento(String departamento) { this.departamento = departamento; }
   public void setTipoContrato(String tipoContrato) { this.tipoContrato = tipoContrato; }
+
+  public void setValeTransporte(boolean valeTransporte) { this.valeTransporte = valeTransporte; }
+  public void setPlanoSaude(boolean valePlanoSaude) { this.valePlanoSaude = planoSaude; }
+  public void setValeRefeicao(boolean valeRefeicao) { this.valeRefeicao = valeRefeicao; }
+  public void setValeAtivo(boolean ativo) { this.ativo = ativo; }
 }
