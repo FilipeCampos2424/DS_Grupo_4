@@ -37,14 +37,12 @@ class Funcionario {
     public boolean isAtivo() { return this.ativo; }
   
   // Metodos set ( definir )
-  public void setNome(String nome) { this.nome = nome; }
-  public void setCargo(String cargo) { this.cargo = cargo; }
-  public void setSalario(double salario) { this.salario = salario; }
-  public void setDepartamento(String departamento) { this.departamento = departamento; }
-  public void setTipoContrato(String tipoContrato) { this.tipoContrato = tipoContrato; }
-
-  public void setValeTransporte(boolean valeTransporte) { this.valeTransporte = valeTransporte; }
-  public void setPlanoSaude(boolean valePlanoSaude) { this.valePlanoSaude = planoSaude; }
-  public void setValeRefeicao(boolean valeRefeicao) { this.valeRefeicao = valeRefeicao; }
-  public void setValeAtivo(boolean ativo) { this.ativo = ativo; }
-}
+public void setNome(String nome) { this.nome = nome; }
+public void setCargo(String cargo) { this.cargo = cargo; }
+public void setSalario(double salario) { if (salario >= 0) {this.salario = salario;} }
+public void setDepartamento(String departamento) { this.departamento = departamento; }
+public void setTipoContrato(String tipoContrato) { this.tipoContrato = tipoContrato; }
+public void setValeTransporte(boolean valeTransporte) { this.valeTransporte = valeTransporte;}
+public void setPlanoSaude(boolean planoSaude) { this.planoSaude = planoSaude; }
+public void setValeRefeicao(boolean valeRefeicao) { this.valeRefeicao = valeRefeicao; }
+public void setAtivo(boolean ativo) { this.ativo = ativo; }
