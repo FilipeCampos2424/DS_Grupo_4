@@ -76,14 +76,51 @@ public boolean gerenciar(ArrayList<Funcionario> listaFuncionarios) {
         menu = leia.nextInt();
 
         switch (menu) {
-            case 1:
-                System.out.println("");
+case 1:
+    System.out.print("Digite o número do cpf do funcionário desejado: ");
+    leia.nextLine(); 
+    String cpf_procurado = leia.nextLine();
+
+    System.out.println("\nFuncionário com o cpf: : " + cpf_procurado + "");
+    
+    boolean encontrar = false;
+
+    for (Funcionario f : listaDeFuncionarios) {
+        
+        if (f.departamento.equalsIgnoreCase(cpf_procurado)) {
+            System.out.println("Nome: " + f.nome + " Cargo: " + f.cargo );
+            encontrar = true;
+        }
+    }
+
+    if (encontrar==false) {
+        System.out.println("Nenhum funcionário encontrado");
+    }
+    break;
+
                 
-                break; 
-                
-            case 2:
-                System.out.println("");
-                break;
+case 2:
+    System.out.print("Digite o nome do departamento que deseja buscar: ");
+    leia.nextLine(); 
+    String departamento_procurado = leia.nextLine();
+
+    System.out.println("\nFuncionários do Departamento: " + departamento_procurado + "");
+    
+    boolean encontrar = false;
+
+    for (Funcionario f : listaDeFuncionarios) {
+        
+        if (f.departamento.equalsIgnoreCase(departamento_procurado)) {
+            System.out.println("Nome: " + f.nome + " | Cargo: " + f.cargo);
+            encontrar = true;
+        }
+    }
+
+    if (encontrar==false) {
+        System.out.println("Nenhum funcionário encontrado");
+    }
+    break;
+
                 
             case 3:
                 System.out.println("");
