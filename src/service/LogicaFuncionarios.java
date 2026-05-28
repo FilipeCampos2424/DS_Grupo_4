@@ -59,13 +59,58 @@ public boolean atualizar(Funcionario f) {
     System.out.println("Funcionário com o CPF " + f.cpf + " não foi encontrado.");
     return false;
 }
+public boolean gerenciar(ArrayList<Funcionario> listaFuncionarios) {
+    Scanner leia = new Scanner(System.in);
+    int menu;
 
-public boolean consultar(Funcionario f) {
-  
+    do {
+        System.out.println("==========Menu Gerenciar============");
+        System.out.println("1-Buscar por CPF");
+        System.out.println("2-Contas por Departamentos");
+        System.out.println("3-Desativar Funcionario");
+        System.out.println("4-Buscar Por Nome"); 
+        System.out.println("5-Todos os funcionarios");
+        System.out.println("6-Sair");
+        System.out.println("====================================");
+        System.out.print("Escolha uma opção: ");
+        menu = leia.nextInt();
+
+        switch (menu) {
+            case 1:
+                System.out.println("");
+                
+                break; 
+                
+            case 2:
+                System.out.println("");
+                break;
+                
+            case 3:
+                System.out.println("");
+                break;
+                
+            case 4:
+                System.out.println("");
+                break;
+                
+            case 5:
+                System.out.println("");
+                break;
+                
+            case 6:
+                System.out.println("");
+                break;
+                
+            default:
+               
+                System.out.println("");
+                break;
+        }
+
+    } while(menu != 6);
 
 
-
-
+    return true; 
 }
 
 
@@ -90,56 +135,8 @@ if (f.cpf ==null || f.cpf.length() != 11   ) {
 
 
       
-        return true;
-
-
-
-    
+        return true; 
 }
-
-
-
-public boolean processar(Funcionario f) {
-  
-
-
-
-
-
-}
-
-
-
-
-public boolean desativarFuncionarir(Funcionario f) {
-  
-
-
-
-
-
-}
-public boolean contarPorDepartam(Funcionario f) {
-  
-
-
-
-
-
-}
-public boolean buscarPorCpf (Funcionario f) {
-  
-
-
-
-
-
-}
-
-
-
-
-
 
 
 
@@ -147,20 +144,19 @@ public boolean buscarPorCpf (Funcionario f) {
         //aqui vai ser o geral, aonde podera selecionar uma das opcoes desde consultyar a cadastrar  um funcionario
       // preparar para receber o objeto funcionario
         Scanner leia = new Scanner(System.in);
-      
+      int r;
 do{
         System.out.println(("==========Menu============"));
         System.out.println(("1-Cadastrar:Funcionario "));
-        System.out.println(("2-Validar  :Funcionario"));
-        System.out.println(("3-Atualizar:Funcionario"));
-   
-        System.out.println(("4-Consultar:Funcionario"));
-        System.out.println(("5-Sair"));
+        System.out.println(("2-Atualizar:Funcionario"));
+        System.out.println(("3-Gerenciar :Funcionarios"));
+        System.out.println(("4-Sair"));
+
         System.out.println(("=========================="));
-        int r = leia.nextInt();
+        r = leia.nextInt();
         
 
-}while(r !=5);
+}while(r !=4);
 
        
 
