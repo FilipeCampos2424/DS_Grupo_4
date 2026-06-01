@@ -47,3 +47,4 @@ public void setValeTransporte(boolean valeTransporte) { this.valeTransporte = va
 public void setPlanoSaude(boolean planoSaude) { this.planoSaude = planoSaude; }
 public void setValeRefeicao(boolean valeRefeicao) { this.valeRefeicao = valeRefeicao; }
 public void setAtivo(boolean ativo) { this.ativo = ativo; }
+}
