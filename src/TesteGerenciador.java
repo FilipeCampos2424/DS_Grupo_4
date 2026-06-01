@@ -1,3 +1,5 @@
+import model.Funcionario;
+import service.GerenciadorFuncionarios;
 public class TesteGerenciador {
 
     public static void main(String[] args) {
