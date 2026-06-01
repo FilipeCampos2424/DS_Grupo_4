@@ -29,7 +29,7 @@ public class TelaPrincipal extends JFrame { //Classe TelaPrincipal, o extends JF
 
 //Campo do nome
         painelFormulario.add(new JLabel("Nome:"));
-        JTextField txtNome = new JTextField(20); //o número é o limite de caracteres do texto
+        JTextField txtNome = new JTextField(20); // o numero 20 reserva espaço na tela para aproximadamente 20 caracteres
         painelFormulario.add(txtNome);
 
 //Campo do CPF
