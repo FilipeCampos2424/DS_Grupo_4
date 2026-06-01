@@ -1,5 +1,5 @@
 package service;
-
+import model.Funcionario;
 import java.util.ArrayList;
 
 public class GerenciadorFuncionarios {
@@ -24,6 +24,5 @@ public class GerenciadorFuncionarios {
   }
   return null;
  }
-
  
 }
