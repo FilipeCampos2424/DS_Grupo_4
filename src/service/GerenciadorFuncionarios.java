@@ -15,14 +15,28 @@ public class GerenciadorFuncionarios {
  }
 
  public Funcionario buscarPorCpf(String cpfProcurado) {
+  
+  if (cpfExiste(cpfProcurado)) {
+   
+   for (int i = 0; i < funcionarios.size(); i++) {
+    Funcionario f = funcionarios.get(i);
+    if (f.getCpf().equals(cpfProcurado)) {
+     return f;
+    }
+   }
+  }
+  return null;
+ }
+
+ public boolean cpfExiste(String cpfProcurado) {
   for (int i = 0; i < funcionarios.size(); i++) {
    Funcionario f = funcionarios.get(i);
 
    if (f.getCpf().equals(cpfProcurado)) {
-    return f;
+    return true;
    }
   }
-  return null;
+  return false;
  }
  
 }
