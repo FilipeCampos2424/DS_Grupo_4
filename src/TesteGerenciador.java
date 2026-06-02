@@ -27,19 +27,30 @@ public class TesteGerenciador {
                 "CLT"
             );
 
+        Funcionario enzo =
+            new Funcionario(
+                "Enzo",
+                "109876543213",
+                "Apresentador de tele novela",
+                3000,
+                "TI",
+                "CLT"
+            );
 
-        gerenciador.cadastrar(joao);
-        gerenciador.cadastrar(eleno);
-
+        gerenciador.cadastrarFuncionario(joao);
+        gerenciador.cadastrarFuncionario(eleno);
+        gerenciador.cadastrarFuncionario(enzo);
         
         Funcionario resultado = gerenciador.buscarPorCpf("10987654321");
-        boolean existe = gerenciador.cpfExiste("10987654321");
-        if (existe) {
+        if (resultado != null) {
             System.out.println("Encontrado!");
             System.out.println(resultado.getNome());
         } else {
             System.out.println("Não encontrado.");
         }
+
+        
+        System.out.print("Funcionarios cadastrados: " + gerenciador.listarFuncionarios());
     }
 
 }
