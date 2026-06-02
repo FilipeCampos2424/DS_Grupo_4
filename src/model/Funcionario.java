@@ -47,4 +47,18 @@ public void setValeTransporte(boolean valeTransporte) { this.valeTransporte = va
 public void setPlanoSaude(boolean planoSaude) { this.planoSaude = planoSaude; }
 public void setValeRefeicao(boolean valeRefeicao) { this.valeRefeicao = valeRefeicao; }
 public void setAtivo(boolean ativo) { this.ativo = ativo; }
+
+@Override
+public String toString() {
+    return "Nome: " + nome +
+           ", CPF: " + cpf +
+           ", Cargo: " + cargo +
+           ", Salário: " + salario +
+           ", Departamento: " + departamento +
+           ", Contrato: " + tipoContrato +
+           ", Vale Transporte: " + valeTransporte +
+           ", Plano Saúde: " + planoSaude +
+           ", Vale Refeição: " + valeRefeicao +
+           ", Ativo: " + ativo;
+  }
 }
