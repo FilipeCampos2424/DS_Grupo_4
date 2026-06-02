@@ -6,37 +6,56 @@ public class GerenciadorFuncionarios {
 
  private ArrayList<Funcionario> funcionarios;
  
+
+
  public GerenciadorFuncionarios() {
-  funcionarios = new ArrayList<>();
- }
+    funcionarios = new ArrayList<>();
+ } 
  
- public void cadastrar(Funcionario funcionario) {
-  funcionarios.add(funcionario);
- }
+public boolean cadastrarFuncionario(Funcionario funcionario) {
+
+    if (validarCpf(funcionario.getCpf())) {
+        return false;
+    }
+
+    funcionarios.add(funcionario);
+    return true;
+}
 
  public Funcionario buscarPorCpf(String cpfProcurado) {
-  
-  if (cpfExiste(cpfProcurado)) {
-   
+
    for (int i = 0; i < funcionarios.size(); i++) {
     Funcionario f = funcionarios.get(i);
+
     if (f.getCpf().equals(cpfProcurado)) {
      return f;
     }
    }
-  }
+
   return null;
- }
+}
 
- public boolean cpfExiste(String cpfProcurado) {
-  for (int i = 0; i < funcionarios.size(); i++) {
-   Funcionario f = funcionarios.get(i);
+public ArrayList<Funcionario> listarFuncionarios() {
+    return funcionarios;
+}
 
-   if (f.getCpf().equals(cpfProcurado)) {
-    return true;
-   }
-  }
-  return false;
- }
- 
+public ArrayList<Funcionario> filtrarAtivos() {
+
+    ArrayList<Funcionario> ativos = new ArrayList<>();
+
+    for (Funcionario f : funcionarios) {
+
+        if (f.isAtivo()) {
+            ativos.add(f);
+        }
+
+    }
+
+    return ativos;
+}
+
+public boolean validarCpf(String cpf) {
+    return buscarPorCpf(cpf) != null;
+}
+
 }
