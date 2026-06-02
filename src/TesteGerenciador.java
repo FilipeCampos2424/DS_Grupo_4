@@ -17,18 +17,29 @@ public class TesteGerenciador {
                 "CLT"
             );
 
+        Funcionario eleno =
+            new Funcionario(
+                "eleno",
+                "10987654321",
+                "garoto de programa",
+                3000,
+                "TI",
+                "CLT"
+            );
+
+
         gerenciador.cadastrar(joao);
+        gerenciador.cadastrar(eleno);
 
-        Funcionario resultado =
-            gerenciador.buscarPorCpf("12345678901");
-
-        if (resultado != null) {
+        
+        Funcionario resultado = gerenciador.buscarPorCpf("10987654321");
+        boolean existe = gerenciador.cpfExiste("10987654321");
+        if (existe) {
             System.out.println("Encontrado!");
             System.out.println(resultado.getNome());
         } else {
             System.out.println("Não encontrado.");
         }
-
     }
 
 }
