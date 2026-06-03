@@ -50,7 +50,12 @@ public class TesteGerenciador {
         }
 
         
-        System.out.print("Funcionarios cadastrados: " + gerenciador.listarFuncionarios());
+        gerenciador.desativarFuncionario("10987654321");
+        gerenciador.desativarFuncionario("109876543213");
+
+        System.out.print(gerenciador.filtrarAtivos());
     }
 
+
+    
 }
