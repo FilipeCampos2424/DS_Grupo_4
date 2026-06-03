@@ -58,4 +58,19 @@ public boolean validarCpf(String cpf) {
     return buscarPorCpf(cpf) != null;
 }
 
+public boolean desativarFuncionario(String cpf) {
+
+    Funcionario funcionario =
+        buscarPorCpf(cpf);
+
+    if (funcionario != null) {
+
+        funcionario.setAtivo(false);
+        return true;
+
+    }
+
+    return false;
+}
+
 }
