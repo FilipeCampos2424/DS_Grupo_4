@@ -6,7 +6,7 @@ public class TesteGerenciador {
 
         GerenciadorFuncionarios gerenciador =
             new GerenciadorFuncionarios();
-
+        
         Funcionario joao =
             new Funcionario(
                 "João",
