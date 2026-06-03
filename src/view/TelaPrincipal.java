@@ -1,4 +1,4 @@
-package src.view; //nome do package pra importar no Main
+package view; //nome do package pra importar no Main
 
 import javax.swing.*; //Importa tudo do java swing
 
