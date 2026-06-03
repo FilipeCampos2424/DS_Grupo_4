@@ -1,19 +1,19 @@
 #TITULO
 
 
-##DESCRIÇÃO
-O QUE FAZ:
+##Descrição
+função:
 
-COM O QUE FOI CONSTRUIDO(TECNOLOGIAS):
+Com o que foi contruido(tecnologias):
 
 FINALIDADE:
 
-##INTRUÇÃO DE USO:
+##Intruções de uso:
 1.
 2.
 3.
 
-##GUIA E EXPLICAÇÃO:
+##Guia e explicação:
 
 
 
