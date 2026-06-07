@@ -1,12 +1,16 @@
 package view; //nome do package pra importar no Main
 
-import javax.swing.*; //Importa tudo do java swing
+import javax.swing.*;
+import model.Funcionario;
+import service.GerenciadorFuncionarios; //Importa tudo do java swing
 
 
 public class TelaPrincipal extends JFrame { //Classe TelaPrincipal, o extends JFrame "avisa" a classe que ela vai ser um JFrame (janela)
-
+private GerenciadorFuncionarios gerenciador;
+private JTable tabela;
 //Propriedades básicas da janela
     public TelaPrincipal() { 
+        gerenciador = new GerenciadorFuncionarios();
         setTitle("Gerenciador de Funcionários"); //Título da janela
         setSize(800,600); //Tamanho da janela
         setLocationRelativeTo(null); //Centraliza a janela na tela do pc
@@ -95,15 +99,237 @@ public class TelaPrincipal extends JFrame { //Classe TelaPrincipal, o extends JF
         painelFormulario.add(painelChecks);
 
 //Botão de cadastrar no final, ele tem um addActionListener pra quando eu clicar nele, mostrar uma mensagem no terminal
+JButton btnCadastrar = new JButton("Cadastrar");btnCadastrar.addActionListener(e -> {
 
-        JButton btnCadastrar = new JButton("Cadastrar");btnCadastrar.addActionListener(e -> {System.out.println("Botão clicado!");});
-        btnCadastrar.setAlignmentX(LEFT_ALIGNMENT);
-        painelFormulario.add(btnCadastrar);
+    String nome = txtNome.getText();
+    String cpf = txtCpf.getText();
+    String cargo = txtCargo.getText();
 
+    double salario = Double.parseDouble(txtSalario.getText() );
+
+    String departamento = (String) cmbStatus.getSelectedItem();
+
+    String tipoContrato = "";
+
+    if (rbClt.isSelected()) {
+        tipoContrato = "CLT";
+    }
+
+    if (rbPj.isSelected()) {
+        tipoContrato = "PJ";
+    }
+
+    if (rbEstagio.isSelected()) {
+        tipoContrato = "Estágio";
+    }
+
+    Funcionario funcionario =
+        new Funcionario( nome,cpf,cargo,salario,departamento,tipoContrato );
+
+    funcionario.setValeTransporte(
+        chkVt.isSelected()
+    );
+
+    funcionario.setPlanoSaude(
+        chkPs.isSelected()
+    );
+
+    funcionario.setValeRefeicao(
+        chkVr.isSelected()
+    );
+
+    boolean sucesso =
+        gerenciador.cadastrarFuncionario(
+            funcionario
+        );
+
+    if (sucesso) {
+
+        atualizarTabela();
+
+        JOptionPane.showMessageDialog(
+            null,
+            "Funcionário cadastrado com sucesso!"
+        );
+
+    } else {
+
+        JOptionPane.showMessageDialog(
+            null,
+            "CPF já cadastrado!"
+        );
+
+    }
+
+});
+btnCadastrar.setAlignmentX(LEFT_ALIGNMENT);
+painelFormulario.add(btnCadastrar);
 //Adiciona o painel formulario completo ao painel cadastro
         painelCadastro.add(painelFormulario);
+
+//Organiza os componentes em coluna
+painelListagem.setLayout(new BoxLayout(painelListagem, BoxLayout.Y_AXIS));
+
+//Título da aba
+painelListagem.add(new JLabel("Lista de Funcionários"));
+
+painelListagem.add(Box.createVerticalStrut(15));
+
+//Campo de busca
+JPanel painelBusca = new JPanel();
+
+painelBusca.add(new JLabel("Buscar:"));
+
+JTextField txtBusca = new JTextField(20);
+
+painelBusca.add(txtBusca);
+
+JButton btnBuscar = new JButton("Buscar");
+
+btnBuscar.addActionListener(e -> {
+
+    String cpf = txtBusca.getText();
+
+    Funcionario funcionario =
+        gerenciador.buscarPorCpf(cpf);
+
+    if (funcionario != null) {
+
+        JOptionPane.showMessageDialog(
+            null,
+            funcionario.toString() //o toString do funcionario ta na classe model
+        );
+
+    } else {
+
+        JOptionPane.showMessageDialog(
+            null,
+            "Funcionário não encontrado!"
+        );
+
+    }
+
+});
+
+painelBusca.add(btnBuscar);
+
+painelListagem.add(painelBusca);
+
+//Tabela
+String[] colunas = {
+    "Nome",
+    "CPF",
+    "Cargo",
+    "Departamento"
+};
+
+String[][] dados = {};
+
+tabela = new JTable(dados, colunas);
+
+JScrollPane scrollTabela = new JScrollPane(tabela);
+
+painelListagem.add(scrollTabela);
+
+//Botões
+JPanel painelBotoes = new JPanel();
+
+JButton btnAdicionar = new JButton("Adicionar");
+
+//esse botão só muda pra aba 0 que é o cadastro
+btnAdicionar.addActionListener(e -> {
+
+    abas.setSelectedIndex(0);
+
+});
+
+painelBotoes.add(btnAdicionar);
+JButton btnExcluir = new JButton("Excluir");
+
+btnExcluir.addActionListener(e -> {
+
+    String cpf = JOptionPane.showInputDialog(
+        "Digite o CPF:"
+    );
+
+    gerenciador.desativarFuncionario(cpf);
+
+    atualizarTabela();
+
+});
+
+painelBotoes.add(btnExcluir);
+
+painelListagem.add(painelBotoes);
+//Organiza os componentes em coluna
+painelRelatorio.setLayout(new BoxLayout(painelRelatorio, BoxLayout.Y_AXIS));
+
+//Título
+painelRelatorio.add(new JLabel("Resumo Geral"));
+
+painelRelatorio.add(Box.createVerticalStrut(20));
+
+//Painel de informações
+JPanel painelInfo = new JPanel();
+
+painelInfo.setLayout(new BoxLayout(painelInfo, BoxLayout.Y_AXIS));
+
+painelInfo.add(new JLabel("TI - Responsável pela tecnologia da informação da empresa."));
+
+painelInfo.add(Box.createVerticalStrut(10));
+
+painelInfo.add(new JLabel("Financeiro - Responsável pelo controle financeiro e pagamentos."));
+
+painelInfo.add(Box.createVerticalStrut(10));
+
+painelInfo.add(new JLabel("Comercial - Responsável pelas vendas e relacionamento com clientes."));
+
+painelRelatorio.add(painelInfo);
+
+painelRelatorio.add(Box.createVerticalStrut(20));
 
 
         setVisible(true);
     }
+    private void atualizarTabela() {
+
+    java.util.ArrayList<Funcionario> lista =
+        gerenciador.listarFuncionarios();
+
+    String[] colunas = {
+        "Nome",
+        "CPF",
+        "Cargo",
+        "Departamento"
+    };
+
+    String[][] dados =
+        new String[lista.size()][4];
+
+    for (int i = 0; i < lista.size(); i++) {
+
+        Funcionario f = lista.get(i);
+
+        dados[i][0] = f.getNome();
+        dados[i][1] = f.getCpf();
+        dados[i][2] = f.getCargo();
+
+        String departamento =
+            f.getDepartamento();
+
+        if (!f.isAtivo()) {
+            departamento += " (Inativo)"; //coloca inativo do lado pra ficar visivel na tabela
+        }
+
+        dados[i][3] = departamento;
+
+    }
+
+    tabela.setModel(
+        new javax.swing.table.DefaultTableModel(
+            dados,
+            colunas
+        )
+    );
+}
 }
