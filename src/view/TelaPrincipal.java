@@ -18,6 +18,19 @@ public class TelaPrincipal extends JFrame { //Classe TelaPrincipal, o extends JF
         setLocationRelativeTo(null); //Centraliza a janela na tela do pc
         setDefaultCloseOperation(EXIT_ON_CLOSE); //Esse código avisa ao programa que quando eu fechar a janela, o programa vai finalizar
 
+        JMenuBar barraMenu = new JMenuBar(); //Cria a barra de menu
+        JMenu menuFuncionarios = new JMenu("Funcionários"); //Menu funcionários
+        JMenu menuRelatorios = new JMenu("Relatórios"); //Menu relatórios
+        JMenu menuSair = new JMenu("Sair"); //Menu sair
+        JMenuItem itemSair = new JMenuItem("Encerrar"); //novo item ao clicar no sair (encerrar)
+        itemSair.addActionListener(e -> System.exit(0)); //coloca a função de encerrar o programa ao clicar no encerrar
+        
+        menuSair.add(itemSair);
+        barraMenu.add(menuFuncionarios);
+        barraMenu.add(menuRelatorios);
+        barraMenu.add(menuSair);
+        setJMenuBar(barraMenu); // adiciona ao JFrame
+
         //Criação das abas e paineis que estarão nelas
         JTabbedPane abas = new JTabbedPane();
         JPanel painelCadastro = new JPanel();
@@ -143,7 +156,7 @@ public class TelaPrincipal extends JFrame { //Classe TelaPrincipal, o extends JF
 
         //busca
         JPanel painelBusca = new JPanel();
-        painelBusca.add(new JLabel("Buscar:"));
+        painelBusca.add(new JLabel("Buscar (CPF):"));
         JTextField txtBusca = new JTextField(20);
         painelBusca.add(txtBusca);
 
@@ -184,6 +197,14 @@ public class TelaPrincipal extends JFrame { //Classe TelaPrincipal, o extends JF
         });
         painelBotoes.add(btnExcluir);
         painelListagem.add(painelBotoes);
+    
+        JToggleButton tglFiltro = new JToggleButton("Mostrar apenas ativos");
+        tglFiltro.addActionListener(e -> {    if (tglFiltro.isSelected()) {        
+        System.out.println("Filtro ativado");
+            } else 
+        {        System.out.println("Filtro desativado");    }});
+        tglFiltro.setAlignmentX(LEFT_ALIGNMENT);
+        painelListagem.add(tglFiltro);
         
         //Organiza tudo em coluna
         painelRelatorio.setLayout(new BoxLayout(painelRelatorio, BoxLayout.Y_AXIS));
@@ -223,5 +244,6 @@ public class TelaPrincipal extends JFrame { //Classe TelaPrincipal, o extends JF
         }
 
         tabela.setModel(new DefaultTableModel(dados, colunas));
+
   }
 }
