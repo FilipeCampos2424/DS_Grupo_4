@@ -20,12 +20,15 @@ public class TelaPrincipal extends JFrame { //Classe TelaPrincipal, o extends JF
 
         JMenuBar barraMenu = new JMenuBar(); //Cria a barra de menu
         JMenu menuFuncionarios = new JMenu("Funcionários"); //Menu funcionários
+        JMenuItem itemListar = new JMenuItem("Listar"); //item pra ir para a página de listar (criada posteriormente)
         JMenu menuRelatorios = new JMenu("Relatórios"); //Menu relatórios
+        JMenuItem itemResumo = new JMenuItem("Resumo por Departamento"); //item pra ir para a página de resumo (criada posteriormente)
         JMenu menuSair = new JMenu("Sair"); //Menu sair
         JMenuItem itemSair = new JMenuItem("Encerrar"); //novo item ao clicar no sair (encerrar)
         itemSair.addActionListener(e -> System.exit(0)); //coloca a função de encerrar o programa ao clicar no encerrar
         
         menuSair.add(itemSair);
+        menuFuncionarios.add(itemListar);
         barraMenu.add(menuFuncionarios);
         barraMenu.add(menuRelatorios);
         barraMenu.add(menuSair);
@@ -41,6 +44,11 @@ public class TelaPrincipal extends JFrame { //Classe TelaPrincipal, o extends JF
         abas.addTab("Listagem", painelListagem);
         abas.addTab("Resumo", painelRelatorio);
         add(abas); 
+
+        itemListar.addActionListener(e -> abas.setSelectedIndex(1)); //coloca a função de mudar de aba quando clicar no botão, o index 1 é o indíce da aba, que começa em 0
+        itemResumo.addActionListener(e -> abas.setSelectedIndex(2)); //explicando mais sobre o indice, se eu tiver 3 abas, os indices respectivos vão ser 0,1 e 2
+        menuFuncionarios.add(itemListar);
+        menuRelatorios.add(itemResumo);
 
         //Novo painel pro formulario, após isso, eu crio um novo box layout pra alinhar os itens do painel
         JPanel painelFormulario = new JPanel();
