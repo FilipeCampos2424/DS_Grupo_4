@@ -222,16 +222,19 @@ public class TelaPrincipal extends JFrame { //Classe TelaPrincipal, o extends JF
         //as informacoes de cada setor
         JPanel painelInfo = new JPanel();
         painelInfo.setLayout(new BoxLayout(painelInfo, BoxLayout.Y_AXIS));
-        painelInfo.add(new JLabel("TI - Responsável pela tecnologia da informação da empresa."));
+        painelInfo.add(new JLabel("TI: " + gerenciador.contarPorDepartamento("TI") + " funcionário(s) ativo(s)"));
         painelInfo.add(Box.createVerticalStrut(10));
-        painelInfo.add(new JLabel("Financeiro - Responsável pelo controle financeiro e pagamentos."));
+        painelInfo.add(new JLabel("Financeiro: " + gerenciador.contarPorDepartamento("Financeiro") + " funcionário(s) ativo(s)"));
         painelInfo.add(Box.createVerticalStrut(10));
-        painelInfo.add(new JLabel("Comercial - Responsável pelas vendas e relacionamento com clientes."));
-        painelRelatorio.add(painelInfo);
+        painelInfo.add(new JLabel("Comercial: " + gerenciador.contarPorDepartamento("Comercial") + " funcionário(s) ativo(s)"));
+        painelInfo.add(Box.createVerticalStrut(10));
+        painelInfo.add(new JLabel("Total de salários ativos: R$ " + gerenciador.calcularTotalSalarios()));
         painelRelatorio.add(Box.createVerticalStrut(20));
-
+        painelRelatorio.add(painelInfo);
         setVisible(true);
     }
+
+    
 
   private void atualizarTabela() {
         ArrayList<Funcionario> lista = gerenciador.listarFuncionarios();
