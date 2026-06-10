@@ -48,4 +48,8 @@ Para rodar e testar este projeto na sua máquina local, siga os passos abaixo:
 2. **Abrir na IDE:** Abra a pasta do projeto em uma IDE Java de sua preferência (como Eclipse, IntelliJ IDEA ou NetBeans).
 3. **Executar a Aplicação:** * Para testar a lógica do sistema via terminal, execute o arquivo `src/TesteGerenciador.java`.
    * Para abrir o sistema com a interface gráfica (Janela), execute o arquivo `Main.java` localizado na raiz da pasta `src`.
-  
+
+
+## Vídeo(Pitch) do projeto:
+Fizemos um pitch em vídeo para apresentar o código e quem fez o que, o link estará aqui no **README.md** e como um **.txt** no repositório.
+**Link do vídeo:** https://www.youtube.com/watch?v=v3M3i6vdkX8
