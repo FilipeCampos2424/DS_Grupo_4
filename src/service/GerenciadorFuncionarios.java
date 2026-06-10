@@ -54,35 +54,4 @@ public class GerenciadorFuncionarios {
         }
         return false;
     }
-
-  
-
-    public boolean reativarFuncionario(String cpf) {
-        Funcionario funcionario = buscarPorCpf(cpf);
-        if (funcionario != null) {
-            funcionario.setAtivo(true);
-            return true;
-        }
-        return false;
-    }
-
-    public int contarPorDepartamento(String departamento) {
-        int contador = 0;
-        for (Funcionario f : funcionarios) {
-            if (f.isAtivo() && f.getDepartamento().equals(departamento)) {
-                contador++;
-            }
-        }
-        return contador;
-    }
-
-    public double calcularTotalSalarios() {
-        double total = 0;
-        for (Funcionario f : funcionarios) {
-            if (f.isAtivo()) {
-                total += f.getSalario();
-            }
-        }
-        return total;
-    }
 }
