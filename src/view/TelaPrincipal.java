@@ -20,6 +20,7 @@ public class TelaPrincipal extends JFrame { //Classe TelaPrincipal, o extends JF
 
         JMenuBar barraMenu = new JMenuBar(); //Cria a barra de menu
         JMenu menuFuncionarios = new JMenu("Funcionários"); //Menu funcionários
+        JMenuItem itemCadastrar = new JMenuItem("Cadastrar"); //item pra ir para a página de cadastrar (criada posteriormente)
         JMenuItem itemListar = new JMenuItem("Listar"); //item pra ir para a página de listar (criada posteriormente)
         JMenu menuRelatorios = new JMenu("Relatórios"); //Menu relatórios
         JMenuItem itemResumo = new JMenuItem("Resumo por Departamento"); //item pra ir para a página de resumo (criada posteriormente)
@@ -29,6 +30,7 @@ public class TelaPrincipal extends JFrame { //Classe TelaPrincipal, o extends JF
         
         menuSair.add(itemSair);
         menuFuncionarios.add(itemListar);
+        menuFuncionarios.add(itemCadastrar);
         barraMenu.add(menuFuncionarios);
         barraMenu.add(menuRelatorios);
         barraMenu.add(menuSair);
@@ -45,7 +47,8 @@ public class TelaPrincipal extends JFrame { //Classe TelaPrincipal, o extends JF
         abas.addTab("Resumo", painelRelatorio);
         add(abas); 
 
-        itemListar.addActionListener(e -> abas.setSelectedIndex(1)); //coloca a função de mudar de aba quando clicar no botão, o index 1 é o indíce da aba, que começa em 0
+        itemCadastrar.addActionListener(e -> abas.setSelectedIndex(0));//coloca a função de mudar de aba quando clicar no botão, o index 0 é o indíce da aba
+        itemListar.addActionListener(e -> abas.setSelectedIndex(1)); 
         itemResumo.addActionListener(e -> abas.setSelectedIndex(2)); //explicando mais sobre o indice, se eu tiver 3 abas, os indices respectivos vão ser 0,1 e 2
         menuFuncionarios.add(itemListar);
         menuRelatorios.add(itemResumo);
@@ -222,15 +225,14 @@ public class TelaPrincipal extends JFrame { //Classe TelaPrincipal, o extends JF
         //as informacoes de cada setor
         JPanel painelInfo = new JPanel();
         painelInfo.setLayout(new BoxLayout(painelInfo, BoxLayout.Y_AXIS));
-        painelInfo.add(new JLabel("TI: " + gerenciador.contarPorDepartamento("TI") + " funcionário(s) ativo(s)"));
+        painelInfo.add(new JLabel("TI - Responsável pela tecnologia da informação da empresa."));
         painelInfo.add(Box.createVerticalStrut(10));
-        painelInfo.add(new JLabel("Financeiro: " + gerenciador.contarPorDepartamento("Financeiro") + " funcionário(s) ativo(s)"));
+        painelInfo.add(new JLabel("Financeiro - Responsável pelo controle financeiro e pagamentos."));
         painelInfo.add(Box.createVerticalStrut(10));
-        painelInfo.add(new JLabel("Comercial: " + gerenciador.contarPorDepartamento("Comercial") + " funcionário(s) ativo(s)"));
-        painelInfo.add(Box.createVerticalStrut(10));
-        painelInfo.add(new JLabel("Total de salários ativos: R$ " + gerenciador.calcularTotalSalarios()));
-        painelRelatorio.add(Box.createVerticalStrut(20));
+        painelInfo.add(new JLabel("Comercial - Responsável pelas vendas e relacionamento com clientes."));
         painelRelatorio.add(painelInfo);
+        painelRelatorio.add(Box.createVerticalStrut(20));
+
         setVisible(true);
     }
 
