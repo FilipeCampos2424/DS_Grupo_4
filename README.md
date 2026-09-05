@@ -1,22 +1,22 @@
-#Recursos humanos 
+# Recursos humanos 
 
-##Resumo:
+## Resumo:
 O trabalho foi desenvolvido usando-se Java e Java Swing, estruturado seguindo os critérios cobrados da atividade. O código foi pensado e organizado utilizando o padrão arquitetural MVC (Model-View-Controller) para garantir uma divisão clara entre a interface gráfica e as regras de negócio do sistema.
 
-##Descrição:
+## Descrição:
 O Protótipo foi elaborado se baseando cona classe `Funcionario`, que atua como a estrutura principal de dados (Entidade) do sistema. Este modelo foi projetado para representar de forma completa um colaborador no ambiente corporativo, contendo atributos essenciais como Nome, CPF, Cargo, Salário, Departamento e Tipo de Contrato (CLT, PJ, Estágio). Além disso, o modelo já vem preparado com regras para controlar o estado do funcionário (se ele está ativo ou inativo) e a atribuição de benefícios opcionais, como Vale Transporte, Vale Refeição e Plano de Saúde, utilizando métodos modificadores (Setters) e de acesso (Getters) para garantir a segurança dos dados.
 
 
 
-##função:
+## função:
 A principal função do sistema é gerenciar o ciclo de vida dos colaboradores dentro de uma empresa. Isso inclui cadastrar novos funcionários, realizar buscas rápidas através do CPF, listar todos os cadastrados, filtrar apenas os funcionários que estão trabalhando atualmente (ativos) e desativar aqueles que foram desligados.
 
-##Com o que foi contruido(tecnologias):
+## Com o que foi contruido(tecnologias):
 * **Linguagem:** Java (Lógica e POO)
 * **Interface Gráfica:** Java Swing (para o desenvolvimento das telas e componentes visuais)
 * **Armazenamento:** `ArrayList` (para salvar os dados temporariamente em memória durante a execução)
 
-##Finalidade:
+## Finalidade:
 A finalidade deste projeto é fornecer uma ferramenta prática e intuitiva para o departamento de Recursos Humanos. O sistema busca evitar erros comuns de gestão, como o cadastro de CPFs duplicados, e oferece um controle seguro dos benefícios e do status de cada trabalhador de forma organizada.
 
 
